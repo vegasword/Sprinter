@@ -1,0 +1,129 @@
+body {
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  font-family: Cambria, sans-serif !important;
+}
+
+.landingPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftContent {
+  padding: 10em 7em 2em 0em;
+}
+
+#title {
+  font-size: 4em;
+  max-width: 10em;
+}
+
+#subtitle {
+  font-size: 2em;
+}
+
+p img {
+  width: 20px;
+  padding-right: 0.5vw;
+}
+
+p {
+  display: flex;
+  font-size: 1.2em;
+  align-items: center;
+}
+
+.rightContent {
+  width: fit-content;
+  background-color: white;
+  padding: 32px 24px 24px;
+  margin-top: 10em;
+  width: inherit;
+  height: 450px;
+  border-radius: 3%;
+}
+
+#connection {
+  font-size: 2em;
+  color: white;
+  text-align: center;
+  padding: 2em;
+  margin: 0em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+}
+
+.signIn {
+  background: linear-gradient(0, #7605a7, #c90da7);
+  border-radius: 10px;
+  margin: -24px 16px 8px;
+  position: relative;
+  top: -35px;
+  box-shadow: rgba(0, 0, 0, 0.14) 0rem 0.25rem 1.25rem 0rem,
+    rgba(198, 0, 212, 0.4) 0rem 0.4375rem 0.625rem -0.3125rem;
+}
+
+/* --- TOGGLE SWITCH --- */
+.switchBox span {
+  padding-left: 1.1em;
+  text-decoration: none;
+  color: grey;
+}
+
+.switchBox {
+  margin-top: 1.1em;
+  margin-left: 0.5em;
+  display: flex;
+  align-items: center;
+  color: grey;
+}
+
+/* --- BUTTON LOG IN --- */
+button {
+  margin: 3em 0em 1.2em 0em;
+  padding: 10px 24px;
+  background: linear-gradient(0, #7605a7, #c90da7);
+  color: white;
+  cursor: pointer;
+  outline: 0px;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  box-shadow: rgba(26, 115, 232, 0.15) 0rem 0.1875rem 0.1875rem 0rem,
+    rgba(26, 115, 232, 0.2) 0rem 0.1875rem 0.0625rem -0.125rem,
+    rgba(26, 115, 232, 0.15) 0rem 0.0625rem 0.3125rem 0rem;
+  height: 40px;
+  width: 358px;
+  background-size: 150% !important;
+  background-position-x: 25% !important;
+  cursor: pointer;
+  transition: all 150ms ease-in 0s;
+}
+
+button:hover {
+  box-shadow: rgba(118, 5, 167, 0.2) 0px 14px 28px,
+    rgba(118, 5, 167, 0.2) 0px 10px 10px;
+}
+
+.forgot {
+  font-weight: 300;
+  color: rgb(123, 128, 154);
+  display: flex;
+  justify-content: center;
+}
+
+.forgot a {
+  font-weight: 600;
+  opacity: 1;
+  letter-spacing: 0.028em;
+  color: #c90da7;
+  text-decoration: none;
+  padding-left: 0.3em;
+}
