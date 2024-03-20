@@ -14,11 +14,11 @@
         <h1 id="title">SPRINTER</h1>
         <h2 id="subtitle">VOTRE PROJET EN TOUTE AGILITÉ</h2>
         <p>
-          <img src="src/img/verified.png" alt="" />Découvrez ici
+          <img src="assets/images/verified.png" alt="" />Découvrez ici
           l'organisation des sprints de chaque semaine
         </p>
         <p>
-          <img src="src/img/verified.png" alt="" />Participez aux
+          <img src="assets/images/verified.png" alt="" />Participez aux
           rétrospectives avec votre classe
         </p>
       </div>
@@ -27,15 +27,15 @@
         <div class="signIn">
           <h2 id="connection">Connexion</h2>
         </div>
-        <form>
+        <form id="signin-form">
           <div class="container">
             <label class="input">
-              <input placeholder=" " />
+              <input id="email" type="email" placeholder=" " />
               <span>Email</span>
             </label>
 
             <label class="input">
-              <input placeholder=" " />
+              <input id="password" type="password" placeholder=" " />
               <span>Mot de passe</span>
             </label>
 
@@ -52,5 +52,6 @@
         </form>
       </div>
     </section>
+    <script type="module" src="src/signin.ts"></script>
   </body>
 </html>
