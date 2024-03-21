@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="tailwind.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <title>Sprinter - Connexion</title>
+  </head>
+  <body class="bg-[url('../background.jpg')] bg-no-repeat bg-cover bg-center h-screen">
+    <div class="flex items-center justify-evenly h-screen">
+      <div class="text-white">
+        <h1 class="text-6xl font-bold"><i class="fa-duotone fa-person-running"></i>SPRINTER</h1><br />
+        <h2 class="text-xl">VOTRE PROJET EN TOUTE AGILITÉ !</h2><br />
+        <p>
+          <i class="fa-solid fa-circle-check"></i>
+          Déterminez l'organisation de vos sprints en temps réel
+        </p>
+        <p>
+          <i class="fa-solid fa-circle-check"></i>
+          Participez aux rétrospectives avec votre classe
+        </p>
+      </div>
+
+      <div class="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <form id="sign-in" class="card-body">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Email</span>
+            </label>
+            <input type="email" id="email" class="input input-bordered" required />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Password</span>
+            </label>
+            <input type="password" id="password" class="input input-bordered" required />
+            <label class="label">
+              <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+            </label>
+          </div>
+          <div class="form-control">
+              <label class="label cursor-pointer">
+              <span class="label-text">Remember me</span> 
+              <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
+            </label>
+          </div>
+          <div class="form-control mt-6">
+            <button class="btn btn-primary text-white">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="signin.ts"></script>
+  </body>
+</html>
