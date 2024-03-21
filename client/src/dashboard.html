@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="tailwind.css" rel="stylesheet" />
+  <link href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css" rel="stylesheet" />
+  <title>Sprinter - Dashboard</title>
+</head>
+
+<body>
+  <nav class="fixed top-0 z-50 w-full bg-neutral shadow-md">
+    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center justify-start">
+          <!-- TODO: SM Drawer @ https://daisyui.com/components/drawer/ -->
+          <button type="button" class="btn btn-ghost hover:btn-secondary rounded-full sm:hidden">
+            <span class="sr-only">Open sidebar</span>
+            <i class="fa-solid fa-bars w-6 h-6 text-2xl text-white"></i>
+         </button>
+          <a class="flex ms-2 md:me-24">
+            <div class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+            <i class="fa-duotone fa-person-running text-white"></i>
+            <span>Sprinter</span>
+            </div>
+          </a>
+        </div>
+        <div class="flex items-center">
+          <div class="flex items-center ms-3">
+            <div>
+              <button type="button" class="flex text-sm bg-primary rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                <span class="sr-only">Open user menu</span>
+                <div class="skeleton w-8 h-8 rounded-full shrink-0"></div>
+                <!--TODO: Load user photo <img class="w-8 h-8 rounded-full" src="..." alt="user photo">-->
+              </button>
+            </div>
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+              <ul class="py-1" role="none">
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sprints</a>
+                </li>
+                <li>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Class</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-secondary sm:translate-x-0" aria-label="Sidebar">
+    <div class="h-full px-3 pb-4 overflow-y-auto bg-secondary">
+      <ul class="space-y-2 font-medium">
+        <li>
+          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-primary group">
+            <i class="fa-solid fa-table-columns w-5"></i>
+            <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-primary group">
+            <i class="fa-solid fa-gauge-high w-5"></i>
+            <span class="flex-1 ms-3 whitespace-nowrap">Sprints</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-primary group">
+            <i class="fa-solid fa-screen-users w-5"></i>
+            <span class="flex-1 ms-3 whitespace-nowrap">Class</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+</body>
+
+</html>

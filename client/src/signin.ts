@@ -15,5 +15,5 @@ form?.addEventListener("submit", (event) => {
   }  
 });
 
-socket.on("user:signin:success", () => window.location.href="about:blank");
+socket.on("user:signin:success", () => window.location.href="http://localhost:5173/src/dashboard.html");
 
