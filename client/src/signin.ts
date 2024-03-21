@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 
 const socket = io("http://localhost:3000");
 
-const form = document.getElementById("signin-form");
+const form = document.getElementById("sign-in");
 
 form?.addEventListener("submit", (event) => {
   event.preventDefault();

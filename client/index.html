@@ -1,57 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="src/css/signin.css" rel="stylesheet" />
-    <link href="src/css/switch.css" rel="stylesheet" />
-    <link href="src/css/input.css" rel="stylesheet" />
-    <title>Connexion</title>
+    <title>Redirection</title>
   </head>
   <body>
-    <div id="title-container">
-      <div>
-        <h1 id="title">SPRINTER</h1>
-        <h2 id="subtitle">VOTRE PROJET EN TOUTE AGILITÉ</h2>
-        <p>
-          <img src="assets/images/verified.png" />
-          Déterminez l'organisation de vos sprints en temps réel
-        </p>
-        <p>
-          <img src="assets/images/verified.png" />
-          Participez aux rétrospectives avec votre classe
-        </p>
-      </div>
-
-      <div id="sign-in-container">
-        <div id="sign-in-container-header">
-          <h2 id="connection">Connexion</h2>
-        </div>
-        <form id="signin-form">
-          <div class="container">
-            <label class="input">
-              <input id="email" type="email" placeholder=" " />
-              <span>Email</span>
-            </label>
-
-            <label class="input">
-              <input id="password" type="password" placeholder=" " />
-              <span>Mot de passe</span>
-            </label>
-
-            <div class="switchBox">
-              <label class="switch"
-                ><input type="checkbox" /><span class="slider"></span></label
-              ><span>Se souvenir de moi</span>
-            </div>
-            <button type="submit">SE CONNECTER</button>
-            <div class="forgot">
-              <a href="#"> Mot de passe oublié ? </a>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <script type="module" src="src/ts/signin.ts"></script>
+    <script>window.location.href = "./src/signin.html";</script>
   </body>
 </html>
