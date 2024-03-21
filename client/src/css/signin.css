@@ -2,18 +2,18 @@ body {
   background-image: url("../../assets/images/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
   color: white;
   font-family: Arial, sans-serif !important;
+  margin: 0;
+  padding: 0;
 }
 
-.landingPage {
+#title-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.leftContent {
-  padding: 10em 7em 2em 0em;
+  justify-content: space-evenly;
+  height: 100vh;
 }
 
 #title {
@@ -36,14 +36,14 @@ p {
   align-items: center;
 }
 
-.rightContent {
+#sign-in-container {
   width: fit-content;
   background-color: white;
   padding: 32px 24px 24px;
-  margin-top: 10em;
   width: inherit;
   height: 450px;
   border-radius: 3%;
+  user-select: none;
 }
 
 #connection {
@@ -60,7 +60,7 @@ p {
   opacity: 1;
 }
 
-.signIn {
+#sign-in-container-header {
   background: linear-gradient(0, #7605a7, #c90da7);
   border-radius: 10px;
   margin: -24px 16px 8px;
@@ -70,7 +70,6 @@ p {
     rgba(198, 0, 212, 0.4) 0rem 0.4375rem 0.625rem -0.3125rem;
 }
 
-/* --- TOGGLE SWITCH --- */
 .switchBox span {
   padding-left: 1.1em;
   text-decoration: none;
@@ -85,7 +84,6 @@ p {
   color: grey;
 }
 
-/* --- BUTTON LOG IN --- */
 button {
   margin: 3em 0em 1.2em 0em;
   padding: 10px 24px;

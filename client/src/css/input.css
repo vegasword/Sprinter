@@ -1,6 +1,10 @@
+::root {
+    --primary-color: #7605a7;
+    --secondary-color: #c90da7;
+}
 
 .input {
-    --pure-material-safari-helper1: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+    --pure-material-safari-helper1: rgb(var(--secondary-color, 33, 150, 243));
     position: relative;
     display: inline-block;
     padding-top: 6px;
@@ -8,7 +12,7 @@
     line-height: 1.5;
     overflow: hidden;
     margin-bottom: 0.6em;
-    
+    user-select: none;
 }
 
 /* Input, Textarea */
@@ -17,18 +21,18 @@
     box-sizing: border-box;
     margin: 0;
     border: solid 1px; /* Safari */
-    border-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+    border-color: rgba(var(--primary-color, 0, 0, 0), 0.6);
     border-top-color: transparent;
     border-radius: 4px;
     padding: 15px 13px 15px;
     width: 100%;
     height: inherit;
-    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
+    color: rgba(var(--primary-color, 0, 0, 0), 0.87);
     background-color: transparent;
     box-shadow: none; /* Firefox */
     font-size: inherit;
     line-height: inherit;
-    caret-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+    caret-color: rgb(var(--secondary-color, 33, 150, 243));
     transition: border 0.2s, box-shadow 0.2s;
 }
 
@@ -39,10 +43,10 @@
     top: 0;
     left: 0;
     display: flex;
-    border-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+    border-color: rgba(var(--primary-color, 0, 0, 0), 0.6);
     width: 100%;
     max-height: 100%;
-    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+    color: rgba(var(--primary-color, 0, 0, 0), 0.6);
     font-size: 75%;
     line-height: 15px;
     cursor: text;
@@ -59,7 +63,7 @@
     box-sizing: border-box;
     margin-top: 6px;
     border-top: solid 1px;
-    border-top-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+    border-top-color: rgba(var(--primary-color, 0, 0, 0), 0.6);
     min-width: 10px;
     height: 8px;
     pointer-events: none;
@@ -85,7 +89,7 @@
 /* Hover */
 .input:hover > input,
 .input:hover > textarea {
-    border-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
+    border-color: rgba(var(--primary-color, 0, 0, 0), 0.87);
     border-top-color: transparent;
 }
 
@@ -93,18 +97,18 @@
 .input:hover > textarea + span::before,
 .input:hover > input + span::after,
 .input:hover > textarea + span::after {
-    border-top-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
+    border-top-color: rgba(var(--primary-color, 0, 0, 0), 0.87);
 }
 
 .input:hover > input:not(:focus):placeholder-shown,
 .input:hover > textarea:not(:focus):placeholder-shown {
-    border-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
+    border-color: rgba(var(--primary-color, 0, 0, 0), 0.87);
 }
 
 /* Placeholder-shown */
 .input > input:not(:focus):placeholder-shown,
 .input > textarea:not(:focus):placeholder-shown {
-    border-top-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.6);
+    border-top-color: rgba(var(--primary-color, 0, 0, 0), 0.6);
 }
 
 .input > input:not(:focus):placeholder-shown + span,
@@ -123,7 +127,7 @@
 /* Focus */
 .input > input:focus,
 .input > textarea:focus {
-    border-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+    border-color: rgb(var(--secondary-color, 33, 150, 243));
     border-top-color: transparent;
     box-shadow: inset 1px 0 var(--pure-material-safari-helper1), inset -1px 0 var(--pure-material-safari-helper1), inset 0 -1px var(--pure-material-safari-helper1);
     outline: none;
@@ -131,7 +135,7 @@
 
 .input > input:focus + span,
 .input > textarea:focus + span {
-    color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+    color: rgb(var(--secondary-color, 33, 150, 243));
 }
 
 .input > input:focus + span::before,
@@ -147,9 +151,9 @@
 .input > input:disabled + span,
 .input > textarea:disabled,
 .input > textarea:disabled + span {
-    border-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38) !important;
+    border-color: rgba(var(--primary-color, 0, 0, 0), 0.38) !important;
     border-top-color: transparent !important;
-    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+    color: rgba(var(--primary-color, 0, 0, 0), 0.38);
     pointer-events: none;
 }
 
@@ -157,14 +161,14 @@
 .input > input:disabled + span::after,
 .input > textarea:disabled + span::before,
 .input > textarea:disabled + span::after {
-    border-top-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38) !important;
+    border-top-color: rgba(var(--primary-color, 0, 0, 0), 0.38) !important;
 }
 
 .input > input:disabled:placeholder-shown,
 .input > input:disabled:placeholder-shown + span,
 .input > textarea:disabled:placeholder-shown,
 .input > textarea:disabled:placeholder-shown + span {
-    border-top-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38) !important;
+    border-top-color: rgba(var(--primary-color, 0, 0, 0), 0.38) !important;
 }
 
 .input > input:disabled:placeholder-shown + span::before,
