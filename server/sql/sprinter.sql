@@ -16,6 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `classroom`
+--
+
+DROP TABLE IF EXISTS `classroom`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `classroom` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `classroom`
+--
+
+LOCK TABLES `classroom` WRITE;
+/*!40000 ALTER TABLE `classroom` DISABLE KEYS */;
+/*!40000 ALTER TABLE `classroom` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sprint`
 --
 
@@ -28,7 +51,10 @@ CREATE TABLE `sprint` (
   `begin_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   `group_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `teacher_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `teacher_id` (`teacher_id`),
+  CONSTRAINT `sprint_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -64,6 +90,32 @@ LOCK TABLES `student_group` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `student_group_member`
+--
+
+DROP TABLE IF EXISTS `student_group_member`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `student_group_member` (
+  `group_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  KEY `group_id` (`group_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `student_group_member_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `student_group` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `student_group_member_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `student_group_member`
+--
+
+LOCK TABLES `student_group_member` WRITE;
+/*!40000 ALTER TABLE `student_group_member` DISABLE KEYS */;
+/*!40000 ALTER TABLE `student_group_member` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -77,9 +129,11 @@ CREATE TABLE `user` (
   `email` varchar(145) NOT NULL,
   `password` varchar(256) NOT NULL,
   `is_teacher` tinyint(1) NOT NULL DEFAULT '0',
-  `promotion` year DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `classroom_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `classroom_id` (`classroom_id`),
+  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`classroom_id`) REFERENCES `classroom` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,4 +154,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-19 15:59:57
+-- Dump completed on 2024-03-22 15:05:44
