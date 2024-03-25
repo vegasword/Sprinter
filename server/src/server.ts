@@ -1,6 +1,7 @@
 import { createServer } from  "http";
 import * as SQL from "mysql";
 import * as SKT from "socket.io";
+import { IClientSockets } from "./sockets.interface";
 
 export const DOMAIN = "localhost";
 export const SQL_PORT = 3306;
@@ -43,6 +44,22 @@ io.on("connection", (socket : SKT.Socket) => {
       }
     });
   });
+
+  /*
+  socket.on("teacher:addProject", (data : IClientSockets.Teacher.AddProject) => {
+    sql.query({
+      sql : "SELECT * FROM user AS u WHERE u.email = ? and u.password = ?",
+      values : [email, password]
+    }, (error : SQL.MysqlError, results : Array<any>) => {
+      if (error) { console.error("[SQL] " + error.stack); return; }        
+      if (results[0] !== undefined && results.length === 1) {
+        const user = results[0];
+        socket.emit("user:signin:success", user);
+        console.log(`[SQL] ${user.first_name} ${user.last_name} (${user.email}) is connected`);
+      }
+    });
+  });
+  */
 })
 
 httpServer.listen(SKT_PORT, 

@@ -11,6 +11,11 @@ form?.addEventListener("submit", (event) => {
   const password = document.getElementById("password") as HTMLInputElement;
 
   if (email !== undefined || password !== undefined) {
+    if (!email.value.includes("esiee-it.fr")) {
+      alert("L'email doit être un mail ESIEE valide !");
+      //TODO: [FRONT] UI trigger
+      return;
+    }
     socket.emit("user:signin", email.value, password.value);
   }  
 });

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sprinter - Admin</title>
+  <style> form { border: 1px solid black; width: 20em; } </style>
+</head>
+
+<body>
+  <h1>Actions enseignant</h1>
+  <h2>Ajouter un projet</h2>
+  <form id="add-project" style="display: flex; flex-direction: column;">
+    <input type="text" placeholder="Nom du projet" id="project-name"></input>
+    <input type="date" placeholder="Date de début" id="project-start"></input>
+    <input type="date" placeholder="Date de fin" id="project-end"></input>
+    <select id="project-classroom">
+      <option value="0">L1</option>
+      <option value="1">L2</option>
+      <option value="2">L3</option>
+      <option value="3">M1</option>
+      <option value="4">M2</option>
+    </select>
+    <select id="project-classroom-campus">
+      <option value="paris">Paris</option>
+      <option value="cergy">Cergy</option>
+    </select>
+    <select id="project-techs" size="5" multiple>
+      <optgroup label="Web classique">
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="js">Javascript</option>
+      </optgroup>
+      <optgroup label="PHP et ses frameworks">
+        <option value="php">PHP</option>
+        <option value="symphony">Symphony</option>
+      </optgroup>
+      <optgroup label="Gestion de base de données">
+        <option value="mysql">MySQL</option>
+      </optgroup>
+      <optgroup label="Framework JavaScript">
+        <option value="reactjs">ReactJS</option>
+        <option value="angular">Angular</option>
+        <option value="vuejs">VueJS</option>
+      </optgroup>
+      <optgroup label="Programmation orientée objet">
+        <option value="java">Java</option>
+        <option value="py">Python</option>
+      </optgroup>
+      <optgroup label="Réseau et adminisation système">
+        <option value="linux">Linux</option>
+        <option value="apache">Apache</option>
+        <option value="nginx">Nginx</option>
+      </optgroup>
+      <optgroup label="Plateformes mobile">
+        <option value="flutter">Flutter</option>
+        <option value="flutter">Kotlin</option>
+        <option value="ios">Switft</option>
+      </optgroup>
+      <optgroup label="Gaming">
+        <option value="unreal">Unreal</option>
+        <option value="unity">Unity</option>
+        <option value="godot">Godot</option>
+      </optgroup>
+    </select>
+    <input value="Ajouter un projet" type="submit"></input>
+  </form>
+  <script type="module" src="admin.ts"></script>
+</body>
+
+</html>
