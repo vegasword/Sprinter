@@ -1,18 +1,29 @@
-import { io } from "socket.io-client";
-import { IClientSockets } from "./sockets.interface";
-
-const socket = io("http://localhost:3000");
-
-const addSprint = document.getElementById("add-sprint") as HTMLFormElement;
-addSprint?.addEventListener("submit", (event : SubmitEvent) => {
-  event.preventDefault();
+document.getElementById("add-sprint")?.addEventListener("submit", (e) => {
+  e.preventDefault();
   
-  const name = document.getElementById("sprint-name") as HTMLInputElement;
-  const start = document.getElementById("sprint-start") as HTMLInputElement;
-  const end = document.getElementById("sprint-end") as HTMLInputElement;
-  const classroom = document.getElementById("sprint-classroom") as HTMLSelectElement;
-  const techsList = document.getElementById("sprint-techs") as HTMLSelectElement;
+  const data = new FormData(e.currentTarget as HTMLFormElement);
+  
 
+  const addSprint = async () => {
+    try {
+      const req = await fetch(
+        "http://localhost:3000/teacher/addSprint/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(Object.fromEntries(data.entries()))
+        }
+      );
+      const res = await req.json();
+      console.log(res);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+  
+  addSprint();
+  
+  /*
   const nTechs : number = techsList.selectedOptions.length;
   if (!(nTechs > 0 && nTechs < 5)) {
     alert("Veuillez sélectionnez entre 1 et 5 technologies");
@@ -34,5 +45,6 @@ addSprint?.addEventListener("submit", (event : SubmitEvent) => {
     
     socket.emit("teacher:addSprint", data);
   }
+  */
 });
 

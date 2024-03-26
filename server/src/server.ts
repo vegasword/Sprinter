@@ -1,12 +1,10 @@
-import { createServer } from  "http";
+import express from "express";
+import cors from "cors";
 import * as SQL from "mysql";
-import * as SKT from "socket.io";
-import { IClientSockets } from "./sockets.interface";
 
 export const DOMAIN = "localhost";
+export const PORT = 3000;
 export const SQL_PORT = 3306;
-export const SKT_PORT = 3000;
-export const CLI_PORT = 5173;
 
 const sql : SQL.Connection = SQL.createConnection({
   host     : DOMAIN,
@@ -22,16 +20,22 @@ sql.connect((error : SQL.MysqlError) => {
   console.log(`[SQL] Connected on ${sql.config.host}:${sql.config.port} (id: ${sql.threadId})`);
 });
 
-const httpServer = createServer();
-const io = new SKT.Server(httpServer, {
-  cors: {
-    origin: "http://" + DOMAIN + ":" + CLI_PORT,
-    methods: ["GET", "POST"],
-  }
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
+app.post("/teacher/addSprint", (req, res) => {
+  res.status(200).json(req.body);
 });
 
-io.on("connection", (socket : SKT.Socket) => {  
-  socket.on("user:signin", (email : string, password : string) => {
+app.listen(PORT, () => {
+  console.log(`[express] Connected on port ${PORT}`);
+});
+
+/*
+server.on("connection", () => {  
+  server.on("user:signin", (email : string, password : string) => {
     sql.query({
       sql : "SELECT * FROM user AS u WHERE u.email = ? and u.password = ?",
       values : [email, password]
@@ -50,11 +54,9 @@ io.on("connection", (socket : SKT.Socket) => {
     sql.query({
       sql : "INSERT INTO sprint (name, start, end, classroom_id, teacher_id) values (?,?,?,?,?)",
       values : [data.name, data.start, data.end, data.classroom_id, data.teacher_id]
-    }, (error : SQL.MysqlError/*, results : Array<any>*/) => {
+    }, (error : SQL.MysqlError, results : Array<any>) => {
       if (error) { console.error("[SQL] " + error.stack); return; }        
     });
   });
 })
-
-httpServer.listen(SKT_PORT, 
-  () => console.log(`[Socket.IO] Connected on port ${SKT_PORT}`));
+*/

@@ -9,20 +9,21 @@
 </head>
 
 <body>
+  <h1>Actions admin</h1>
   <h1>Actions enseignant</h1>
   <h2>Ajouter un sprint</h2>
   <form id="add-sprint" style="display: flex; flex-direction: column;">
-    <input type="text" placeholder="Nom du sprint" id="sprint-name"></input>
-    <input type="date" placeholder="Date de début" id="sprint-start"></input>
-    <input type="date" placeholder="Date de fin" id="sprint-end"></input>
-    <select id="sprint-classroom">
+    <input type="text" placeholder="Nom du sprint" name="name"></input>
+    <input type="date" placeholder="Date de début" name="start"></input>
+    <input type="date" placeholder="Date de fin" name="end"></input>
+    <select name="classroom_id">
       <option value="1">L1</option>
       <option value="2">L2</option>
       <option value="3">L3</option>
       <option value="4">M1</option>
       <option value="5">M2</option>
     </select>
-    <select id="sprint-techs" size="5" multiple>
+    <select id="techs" size="5" multiple>
       <optgroup label="Web classique">
         <option value="html">HTML</option>
         <option value="css">CSS</option>
