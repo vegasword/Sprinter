@@ -25,38 +25,54 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.post("/teacher/addSprint", (req, res) => {
-  res.status(200).json(req.body);
-});
+app.listen(PORT, () => { console.log(`[express] Connected on port ${PORT}`);});
 
-app.listen(PORT, () => {
-  console.log(`[express] Connected on port ${PORT}`);
-});
+///////////////////////////////////////////////////////////////////////////////
+// COMMON REQUESTS
+///////////////////////////////////////////////////////////////////////////////
 
-/*
-server.on("connection", () => {  
-  server.on("user:signin", (email : string, password : string) => {
-    sql.query({
+app.post("/signin", (req, res) => {
+  const data : { email : string, password : string } = req.body;
+  
+  sql.query({
       sql : "SELECT * FROM user AS u WHERE u.email = ? and u.password = ?",
-      values : [email, password]
-    }, (error : SQL.MysqlError, results : Array<any>) => {
+      values : [data.email, data.password]
+    }, (error : SQL.MysqlError, users : Array<any>) => {
       if (error) { console.error("[SQL] " + error.stack); return; }        
-      if (results[0] !== undefined && results.length === 1) {
-        const user = results[0];
-        socket.emit("user:signin:success", user);
+      const user = users[0];
+      if (user) {
+        //TODO: Redirection response
         console.log(`[SQL] ${user.first_name} ${user.last_name} (${user.email}) is connected`);
       }
     });
+  
+  res.status(200);
+});
+
+///////////////////////////////////////////////////////////////////////////////
+// TEACHER REQUESTS
+///////////////////////////////////////////////////////////////////////////////
+
+app.post("/teacher/addSprint", (req, res) => {
+  const data : {
+    name : string, start : string,  end : string,  classroom_id : number, 
+    teacher_id : number, techs : string[]
+  } = req.body;
+
+  //TODO: Validate data
+  
+  sql.query({
+    sql : "INSERT INTO sprint (name, start, end, classroom_id, teacher_id) values (?,?,?,?,?)",
+    values : [data.name, data.start, data.end, data.classroom_id, data.teacher_id]
+  }, (error : SQL.MysqlError) => {
+    if (error) {
+      console.error(`[SQL] (${req.socket.remoteAddress}) ${req.url} : ${error.sqlMessage}`);
+      res.status(400).send();
+      return;
+    }
   });
 
-  socket.on("teacher:addSprint", (data : IClientSockets.Teacher.AddSprint) => {
-    //TODO(a.perche): Check if it's a teacher (LATER: or an admin)
-    sql.query({
-      sql : "INSERT INTO sprint (name, start, end, classroom_id, teacher_id) values (?,?,?,?,?)",
-      values : [data.name, data.start, data.end, data.classroom_id, data.teacher_id]
-    }, (error : SQL.MysqlError, results : Array<any>) => {
-      if (error) { console.error("[SQL] " + error.stack); return; }        
-    });
-  });
-})
-*/
+  //TODO: Push techs in sprint_tech table
+  
+  res.status(200);
+});

@@ -1,2 +1,2 @@
 @echo off
-mysqldump -u root -p sprinter < sprinter.sql
+mysql -u root -p sprinter < sprinter.sql

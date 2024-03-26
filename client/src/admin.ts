@@ -1,50 +1,31 @@
-document.getElementById("add-sprint")?.addEventListener("submit", (e) => {
+const submitRequest = (e : SubmitEvent, route : string) => {
   e.preventDefault();
   
-  const data = new FormData(e.currentTarget as HTMLFormElement);
+  const form = new FormData(e.currentTarget as HTMLFormElement);
+  let formStyle = (e.currentTarget as HTMLElement).style;
   
-
-  const addSprint = async () => {
+  const req = async () => {
     try {
-      const req = await fetch(
-        "http://localhost:3000/teacher/addSprint/",
+      const data = JSON.stringify(Object.fromEntries(form.entries()));
+      console.debug(data);
+      await fetch(
+        `http://localhost:3000${route}/`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(Object.fromEntries(data.entries()))
+          body: data
         }
-      );
-      const res = await req.json();
-      console.log(res);
+      ).then((res : Response) => {
+        if (res.status === 400) formStyle.border = "1px solid red";
+        else formStyle.border = "1px solid green";
+      });
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Request error: ", error);
     }
-  }
-  
-  addSprint();
-  
-  /*
-  const nTechs : number = techsList.selectedOptions.length;
-  if (!(nTechs > 0 && nTechs < 5)) {
-    alert("Veuillez sélectionnez entre 1 et 5 technologies");
-    return;
-  }
-  
-  let techs : Array<string> = [];
-  for (let tech of techsList.selectedOptions) techs.push(tech.value);
-  
-  if (name.value && start.value && end.value && classroom.value && techs) {
-    const data : IClientSockets.Teacher.AddSprint = {
-      name: name.value,
-      start: start.value,
-      end: end.value,
-      classroom_id: Number.parseInt(classroom.value),
-      teacher_id: 2,
-      techs: techs
-    } 
-    
-    socket.emit("teacher:addSprint", data);
-  }
-  */
-});
+  };
+  req();
+};
 
+document.getElementById("add-sprint")
+        ?.addEventListener("submit",  (e) => 
+          submitRequest(e, "/teacher/addSprint"));
