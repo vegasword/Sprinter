@@ -10,23 +10,19 @@
 
 <body>
   <h1>Actions enseignant</h1>
-  <h2>Ajouter un projet</h2>
-  <form id="add-project" style="display: flex; flex-direction: column;">
-    <input type="text" placeholder="Nom du projet" id="project-name"></input>
-    <input type="date" placeholder="Date de début" id="project-start"></input>
-    <input type="date" placeholder="Date de fin" id="project-end"></input>
-    <select id="project-classroom">
-      <option value="0">L1</option>
-      <option value="1">L2</option>
-      <option value="2">L3</option>
-      <option value="3">M1</option>
-      <option value="4">M2</option>
+  <h2>Ajouter un sprint</h2>
+  <form id="add-sprint" style="display: flex; flex-direction: column;">
+    <input type="text" placeholder="Nom du sprint" id="sprint-name"></input>
+    <input type="date" placeholder="Date de début" id="sprint-start"></input>
+    <input type="date" placeholder="Date de fin" id="sprint-end"></input>
+    <select id="sprint-classroom">
+      <option value="1">L1</option>
+      <option value="2">L2</option>
+      <option value="3">L3</option>
+      <option value="4">M1</option>
+      <option value="5">M2</option>
     </select>
-    <select id="project-classroom-campus">
-      <option value="paris">Paris</option>
-      <option value="cergy">Cergy</option>
-    </select>
-    <select id="project-techs" size="5" multiple>
+    <select id="sprint-techs" size="5" multiple>
       <optgroup label="Web classique">
         <option value="html">HTML</option>
         <option value="css">CSS</option>

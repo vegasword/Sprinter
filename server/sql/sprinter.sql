@@ -26,7 +26,7 @@ CREATE TABLE `classroom` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,34 @@ CREATE TABLE `classroom` (
 
 LOCK TABLES `classroom` WRITE;
 /*!40000 ALTER TABLE `classroom` DISABLE KEYS */;
+INSERT INTO `classroom` VALUES (1,'L1'),(2,'L2'),(3,'L3'),(4,'M1'),(5,'M2');
 /*!40000 ALTER TABLE `classroom` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `classroom_student`
+--
+
+DROP TABLE IF EXISTS `classroom_student`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `classroom_student` (
+  `classroom_id` int NOT NULL,
+  `student_id` int NOT NULL,
+  KEY `classroom_id` (`classroom_id`),
+  KEY `student_id` (`student_id`),
+  CONSTRAINT `classroom_student_ibfk_1` FOREIGN KEY (`classroom_id`) REFERENCES `classroom` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `classroom_student_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `classroom_student`
+--
+
+LOCK TABLES `classroom_student` WRITE;
+/*!40000 ALTER TABLE `classroom_student` DISABLE KEYS */;
+/*!40000 ALTER TABLE `classroom_student` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -47,15 +74,17 @@ DROP TABLE IF EXISTS `sprint`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sprint` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) DEFAULT NULL,
-  `begin_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
-  `group_id` int DEFAULT NULL,
+  `name` varchar(64) NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  `classroom_id` int NOT NULL,
   `teacher_id` int NOT NULL,
   PRIMARY KEY (`id`),
+  KEY `classroom_id` (`classroom_id`),
   KEY `teacher_id` (`teacher_id`),
-  CONSTRAINT `sprint_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  CONSTRAINT `sprint_ibfk_1` FOREIGN KEY (`classroom_id`) REFERENCES `classroom` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `sprint_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +93,33 @@ CREATE TABLE `sprint` (
 
 LOCK TABLES `sprint` WRITE;
 /*!40000 ALTER TABLE `sprint` DISABLE KEYS */;
+INSERT INTO `sprint` VALUES (3,'Test','6996-09-06','6969-09-06',1,2);
 /*!40000 ALTER TABLE `sprint` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sprint_tech`
+--
+
+DROP TABLE IF EXISTS `sprint_tech`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sprint_tech` (
+  `sprint_id` int NOT NULL,
+  `tech_id` int NOT NULL,
+  KEY `sprint_id` (`sprint_id`),
+  CONSTRAINT `sprint_tech_ibfk_1` FOREIGN KEY (`sprint_id`) REFERENCES `sprint` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `sprint_tech_ibfk_2` FOREIGN KEY (`sprint_id`) REFERENCES `tech` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sprint_tech`
+--
+
+LOCK TABLES `sprint_tech` WRITE;
+/*!40000 ALTER TABLE `sprint_tech` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sprint_tech` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -116,6 +171,31 @@ LOCK TABLES `student_group_member` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tech`
+--
+
+DROP TABLE IF EXISTS `tech`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tech` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `devicon` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`,`devicon`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tech`
+--
+
+LOCK TABLES `tech` WRITE;
+/*!40000 ALTER TABLE `tech` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tech` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -155,4 +235,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-25 18:45:19
+-- Dump completed on 2024-03-26 11:56:28

@@ -3,16 +3,15 @@ import { IClientSockets } from "./sockets.interface";
 
 const socket = io("http://localhost:3000");
 
-const addProject = document.getElementById("add-project") as HTMLFormElement;
-addProject?.addEventListener("submit", (event) => {
+const addSprint = document.getElementById("add-sprint") as HTMLFormElement;
+addSprint?.addEventListener("submit", (event : SubmitEvent) => {
   event.preventDefault();
   
-  const name = document.getElementById("project-name") as HTMLInputElement;
-  const start = document.getElementById("project-start") as HTMLInputElement;
-  const end = document.getElementById("project-end") as HTMLInputElement;
-  const classroom = document.getElementById("project-classroom") as HTMLSelectElement;
-  const techsList = document.getElementById("project-techs") as HTMLSelectElement;
-  console.log(start.value, end.value);
+  const name = document.getElementById("sprint-name") as HTMLInputElement;
+  const start = document.getElementById("sprint-start") as HTMLInputElement;
+  const end = document.getElementById("sprint-end") as HTMLInputElement;
+  const classroom = document.getElementById("sprint-classroom") as HTMLSelectElement;
+  const techsList = document.getElementById("sprint-techs") as HTMLSelectElement;
 
   const nTechs : number = techsList.selectedOptions.length;
   if (!(nTechs > 0 && nTechs < 5)) {
@@ -22,15 +21,18 @@ addProject?.addEventListener("submit", (event) => {
   
   let techs : Array<string> = [];
   for (let tech of techsList.selectedOptions) techs.push(tech.value);
+  
   if (name.value && start.value && end.value && classroom.value && techs) {
-    const data : IClientSockets.Teacher.AddProject = {
+    const data : IClientSockets.Teacher.AddSprint = {
       name: name.value,
       start: start.value,
       end: end.value,
-      classroom: Number.parseInt(classroom.value),
+      classroom_id: Number.parseInt(classroom.value),
+      teacher_id: 2,
       techs: techs
     } 
-    socket.emit("teacher:addProject", data);
+    
+    socket.emit("teacher:addSprint", data);
   }
 });
 

@@ -45,21 +45,15 @@ io.on("connection", (socket : SKT.Socket) => {
     });
   });
 
-  /*
-  socket.on("teacher:addProject", (data : IClientSockets.Teacher.AddProject) => {
+  socket.on("teacher:addSprint", (data : IClientSockets.Teacher.AddSprint) => {
+    //TODO(a.perche): Check if it's a teacher (LATER: or an admin)
     sql.query({
-      sql : "SELECT * FROM user AS u WHERE u.email = ? and u.password = ?",
-      values : [email, password]
-    }, (error : SQL.MysqlError, results : Array<any>) => {
+      sql : "INSERT INTO sprint (name, start, end, classroom_id, teacher_id) values (?,?,?,?,?)",
+      values : [data.name, data.start, data.end, data.classroom_id, data.teacher_id]
+    }, (error : SQL.MysqlError/*, results : Array<any>*/) => {
       if (error) { console.error("[SQL] " + error.stack); return; }        
-      if (results[0] !== undefined && results.length === 1) {
-        const user = results[0];
-        socket.emit("user:signin:success", user);
-        console.log(`[SQL] ${user.first_name} ${user.last_name} (${user.email}) is connected`);
-      }
     });
   });
-  */
 })
 
 httpServer.listen(SKT_PORT, 
