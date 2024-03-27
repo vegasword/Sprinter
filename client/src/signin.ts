@@ -1,24 +1,30 @@
-import { io } from "socket.io-client";
-
-const socket = io("http://localhost:3000");
-
-const form = document.getElementById("sign-in");
-
-form?.addEventListener("submit", (event) => {
+document.getElementById("sign-in")?.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const email = document.getElementById("email") as HTMLInputElement;
-  const password = document.getElementById("password") as HTMLInputElement;
+  const form = new FormData(event.currentTarget as HTMLFormElement);
 
-  if (email !== undefined || password !== undefined) {
-    if (!email.value.includes("esiee-it.fr")) {
-      alert("L'email doit être un mail ESIEE valide !");
-      //TODO: [FRONT] UI trigger
-      return;
+  const req = async () => {
+    try {
+      await fetch(
+        "http://localhost:3000/signin/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(Object.fromEntries(form.entries()))
+        }
+      ).then((res : Response) => {
+        switch (res.status) {            
+          case 200:
+            window.location.assign(res.url);
+            break;
+          case 400:
+            alert("Email ou mot de passe invalide");
+            break;
+        }
+      });
+    } catch (error) {
+      console.error("Request error: ", error);
     }
-    socket.emit("user:signin", email.value, password.value);
-  }  
+  };
+  req();
 });
-
-socket.on("user:signin:success", () => window.location.href="http://localhost:5173/src/dashboard.html");
-

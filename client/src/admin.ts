@@ -6,14 +6,14 @@ const submitRequest = (e : SubmitEvent, route : string) => {
   
   const req = async () => {
     try {
-      const data = JSON.stringify(Object.fromEntries(form.entries()));
-      console.debug(data);
+      for (let [_, value] of form) if (!value) throw("Invalid field");
+      
       await fetch(
         `http://localhost:3000${route}/`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: data
+          body: JSON.stringify(Object.fromEntries(form.entries()))
         }
       ).then((res : Response) => {
         if (res.status === 400) formStyle.border = "1px solid red";
