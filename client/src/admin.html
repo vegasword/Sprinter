@@ -5,11 +5,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sprinter - Admin</title>
-  <style> form { border: 1px solid black; width: 20em; } </style>
+  <style> 
+    h1 { margin: 0; }
+    form { border: 1px solid black; width: 20em; }
+  </style>
 </head>
 
 <body>
-  <h1>Actions admin</h1>
+  <h1>Actions Admin</h1>
+  <div style="display: flex; flex-wrap: wrap;">
+    <div style="display: flex; flex-direction: column; margin: 10px;">
+      <h2>Ajouter un utilisateur</h2>
+      <form id="add-people" style="display: flex; flex-direction: column;">
+        <input type="text" placeholder="Nom" name="lastName" required></input>
+        <input type="text" placeholder="Prénom" name="firstName" required></input>
+        <input type="email" placeholder="Email" name="email" required></input>
+        <div style="display: flex;">
+          <input type="checkbox" id="isTeacher" name="isTeacher"></input>
+          <label for="isTeacher">Is teacher</label>
+        </div>
+        <input value="Ajouter un élève" type="submit"></input>
+      </form>
+    </div>
+  </div>
   <h1>Actions enseignant</h1>
   <div style="display: flex; flex-wrap: wrap;">
     <div style="display: flex; flex-direction: column; margin: 10px;">

@@ -6,7 +6,7 @@ const submitRequest = (e : SubmitEvent, route : string) => {
   
   const req = async () => {
     try {
-      for (let [_, value] of form) if (!value) throw("Invalid field");
+      for (let [_, value] of form) if (!value) throw("Invalid field");      
       
       await fetch(
         `http://localhost:3000${route}/`,
@@ -25,6 +25,10 @@ const submitRequest = (e : SubmitEvent, route : string) => {
   };
   req();
 };
+
+document.getElementById("add-people")
+        ?.addEventListener("submit",  (e) => 
+          submitRequest(e, "/admin/addPeople"));
 
 document.getElementById("add-sprint")
         ?.addEventListener("submit",  (e) => 

@@ -80,11 +80,12 @@ CREATE TABLE `sprint` (
   `classroom_id` int NOT NULL,
   `teacher_id` int NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
   KEY `classroom_id` (`classroom_id`),
   KEY `teacher_id` (`teacher_id`),
   CONSTRAINT `sprint_ibfk_1` FOREIGN KEY (`classroom_id`) REFERENCES `classroom` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `sprint_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +94,6 @@ CREATE TABLE `sprint` (
 
 LOCK TABLES `sprint` WRITE;
 /*!40000 ALTER TABLE `sprint` DISABLE KEYS */;
-INSERT INTO `sprint` VALUES (3,'Test','6996-09-06','6969-09-06',1,2);
 /*!40000 ALTER TABLE `sprint` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,13 +207,14 @@ CREATE TABLE `user` (
   `first_name` varchar(64) NOT NULL,
   `last_name` varchar(64) NOT NULL,
   `email` varchar(145) NOT NULL,
-  `password` varchar(256) NOT NULL,
+  `password` varchar(256) DEFAULT NULL,
   `is_teacher` tinyint(1) NOT NULL DEFAULT '0',
   `classroom_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `first_name` (`first_name`,`last_name`),
   KEY `classroom_id` (`classroom_id`),
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`classroom_id`) REFERENCES `classroom` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +223,6 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'Alexandre','Perché','alexandre.perche@edu.esiee-it.fr','azerty123',0,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -235,4 +235,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-26 21:18:43
+-- Dump completed on 2024-03-27 19:02:16
