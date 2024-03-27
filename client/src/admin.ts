@@ -1,23 +1,28 @@
 const submitRequest = (e : SubmitEvent, route : string) => {
   e.preventDefault();
   
-  const form = new FormData(e.currentTarget as HTMLFormElement);
-  let formStyle = (e.currentTarget as HTMLElement).style;
+  const form : HTMLFormElement = (e.currentTarget as HTMLFormElement);
+  const formData : FormData  = new FormData(form);
+  let formStyle : CSSStyleDeclaration = (e.currentTarget as HTMLElement).style;
   
   const req = async () => {
     try {
-      for (let [_, value] of form) if (!value) throw("Invalid field");      
+      for (let [_, value] of formData) if (!value) throw("Invalid field(s)");      
       
       await fetch(
         `http://localhost:3000${route}/`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(Object.fromEntries(form.entries()))
+          body: JSON.stringify(Object.fromEntries(formData.entries()))
         }
       ).then((res : Response) => {
-        if (res.status === 400) formStyle.border = "1px solid red";
-        else formStyle.border = "1px solid green";
+        if (res.status == 400) {
+          formStyle.border = "1px solid red";
+        } else {
+          formStyle.border = "none";
+          form.reset();
+        }
       });
     } catch (error) {
       console.error("Request error: ", error);
@@ -26,9 +31,9 @@ const submitRequest = (e : SubmitEvent, route : string) => {
   req();
 };
 
-document.getElementById("add-people")
+document.getElementById("add-user")
         ?.addEventListener("submit",  (e) => 
-          submitRequest(e, "/admin/addPeople"));
+          submitRequest(e, "/admin/addUser"));
 
 document.getElementById("add-sprint")
         ?.addEventListener("submit",  (e) => 

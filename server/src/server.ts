@@ -1,7 +1,9 @@
 import * as fs from "node:fs";
+
 import express from "express";
 import cors from "cors";
 import * as SQL from "mysql";
+
 import { sha256 } from "js-sha256";
 import { generate } from "generate-password";
 
@@ -65,7 +67,7 @@ app.post("/signin", (req, res) => {
 // ADMIN REQUESTS
 ///////////////////////////////////////////////////////////////////////////////
 
-app.post("/admin/addPeople", (req, res) => {
+app.post("/admin/addUser", (req, res) => {
   const data : { 
     firstName : string, lastName : string, email : string, password : string,
     isTeacher ?: string
@@ -106,6 +108,25 @@ app.post("/admin/addPeople", (req, res) => {
     }
   });
 });
+
+app.get("/admin/getUsers", (req, res) => {
+  sql.query("SELECT * from user",
+    (error : SQL.MysqlError, results : Array<any>) => {
+    if (error) {
+      console.error(`[SQL] (${req.socket.remoteAddress}) ${req.url} : `,
+                    `${error.sqlMessage}`);
+      res.sendStatus(400);
+      return;
+    } else if (!results) {
+      console.error(`[SQL] (${req.socket.remoteAddress}) ${req.url} : `,
+                    `Empty users set`);
+      res.sendStatus(400);
+    } else {
+      res.json(results);   
+    }
+  });
+});
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // TEACHER REQUESTS

@@ -7,7 +7,7 @@
   <title>Sprinter - Admin</title>
   <style> 
     h1 { margin: 0; }
-    form { border: 1px solid black; width: 20em; }
+    form { border: none; width: 20em; }
   </style>
 </head>
 
@@ -15,16 +15,16 @@
   <h1>Actions Admin</h1>
   <div style="display: flex; flex-wrap: wrap;">
     <div style="display: flex; flex-direction: column; margin: 10px;">
-      <h2>Ajouter un utilisateur</h2>
-      <form id="add-people" style="display: flex; flex-direction: column;">
+      <h2>Gestion des utilisateurs</h2>
+      <form id="add-user" autocomplete="off" style="display: flex; flex-direction: column;">
         <input type="text" placeholder="Nom" name="lastName" required></input>
         <input type="text" placeholder="Prénom" name="firstName" required></input>
         <input type="email" placeholder="Email" name="email" required></input>
         <div style="display: flex;">
           <input type="checkbox" id="isTeacher" name="isTeacher"></input>
-          <label for="isTeacher">Is teacher</label>
+          <label for="isTeacher" style="user-select: none">Is teacher</label>
         </div>
-        <input value="Ajouter un élève" type="submit"></input>
+        <input value="Ajouter un utilisateur" type="submit"></input>
       </form>
     </div>
   </div>
@@ -32,7 +32,7 @@
   <div style="display: flex; flex-wrap: wrap;">
     <div style="display: flex; flex-direction: column; margin: 10px;">
       <h2>Ajouter un sprint</h2>
-      <form id="add-sprint" style="display: flex; flex-direction: column;">
+      <form id="add-sprint" autocomplete="off" style="display: flex; flex-direction: column;">
         <input type="number" placeholder="Id enseignant" name="teacher_id" required></input>
         <input type="text" placeholder="Nom du sprint" name="name" required></input>
         <input type="date" placeholder="Date de début" name="start" required></input>
