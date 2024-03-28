@@ -1,7 +1,10 @@
+import { sha256 } from "js-sha256";
+
 document.getElementById("sign-in")?.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const form = new FormData(event.currentTarget as HTMLFormElement);
+  form.set("password", sha256(form.get("password") as string));
 
   const req = async () => {
     try {
