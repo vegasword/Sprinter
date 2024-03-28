@@ -1,3 +1,2 @@
 @echo off
-rem Remove --add-drop-database flag for production
-mysqldump -u root -p --add-drop-database sprinter > sprinter.sql
+mysqldump -u root -p --add-drop-database --skip-extended-insert --force sprinter > sprinter.sql
