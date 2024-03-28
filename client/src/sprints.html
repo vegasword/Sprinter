@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="imports.css">
+  <script src="./dashboard.js"></script>
+  <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+  <script src='../node_modules/flowbite/dist/datepicker.js'></script>
+</head>
+
+
+<body>
+
+  <div class="navBar bg-base-100 shadow-md w-auto flex justify-between pl-8">
+    <div class="text-2xl flex items-center text-center">
+      <i class="fa-duotone fa-person-running text-black"></i>
+      Sprinter
+    </div>
+
+    <div class="flex py-1 pr-3">
+      <div class="dropdown dropdown-end">
+
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle mr-1">
+          <div class="indicator">
+            <i class="fa-solid fa-bell"></i>
+          </div>
+        </div>
+
+        <div tabindex="0" class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
+          <div class="card-body">
+            <span class="font-bold text-lg">8 Items</span>
+            <span class="text-info">Subtotal: $999</span>
+            <div class="card-actions">
+              <button class="btn btn-primary btn-block">View cart</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="dropdown dropdown-end">
+
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar" id="dropdownTrigger">
+          <div class="w-10 rounded-full">
+            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+          </div>
+        </div>
+
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black" id="dropdownContent">
+          <li class="flex flex-row text-center"><a class="p-4 w-full rounded-lg"><i class="fa-solid fa-user"></i>Profil</a></li>
+          <li class="flex flex-row text-center"><a class="p-4 w-full rounded-lg"><i class="fa-solid fa-gear"></i>Paramètres</a></li>
+          <li class="flex flex-row text-center hover:bg-red-500/60 rounded-lg"><a class="p-4 w-full"><i class="fa-solid fa-right-from-bracket"></i>Se déconnecter</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sprintsContent flex flex-row h-full">
+    <div class="sideBar relative flex flex-col bg-clip-border text-gray-700 w-full max-w-[15rem] p-4 shadow-xl shadow-blue-gray-900/5">
+        <nav class="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700 justify-between flex-1">
+
+            <div class="topContent max-w-[12em]">
+
+                <a href="sprints.html">
+                <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none hover:max-">
+                    <div class="grid place-items-center mr-4">
+                    <i class="fa-solid fa-house"></i>
+                    </div>Dashboard
+                </div>
+                </a>
+                
+                <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                <div class="grid place-items-center mr-4">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>Sprints
+                </div>
+                
+                <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                <div class="grid place-items-center mr-4">
+                    <i class="fa-solid fa-screen-users"></i>
+                </div>Classes
+                </div>
+
+                <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                <div class="grid place-items-center mr-4">
+                    <i class="fa-solid fa-inbox"></i>
+                </div>Boite Mail <div class="grid place-items-center ml-auto justify-self-end"></div>
+                </div>
+            
+            </div>
+        
+        
+            <div class="bottomContent max-w-[12em]">
+
+                <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
+                <div class="grid place-items-center mr-4">
+                    <i class="fa-solid fa-gear"></i>
+                </div>Paramètres
+                </div>
+
+                <div role="button" tabindex="0" class="flex items-center w-full p-3 rounded-lg text-start leading-tight hover:bg-red-500/60 transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 outline-none">
+                <div class="grid place-items-center mr-4 ">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </div>Se déconnecter
+                </div>
+
+            </div>
+        </nav>
+    </div> 
+
+    <div class="sprintsContent w-full overflow-y-scroll mb-10">
+        <div class="selects flex flex-row p-8 ">
+            <select class="select select-secondary w-full max-w-64 h-fit">
+                <option disabled selected>Année</option>
+                <option>2023</option>
+                <option>2024</option>
+            </select>
+
+            <select class="select select-secondary  w-full max-w-64 h-fit ml-6 mr-auto">
+                <option disabled selected>Niveau</option>
+                <option>L1</option>
+                <option>L2</option>
+                <option>L3</option>
+                <option>M1</option>
+                <option>M2</option>
+                <option>TP-RECO</option>
+            </select>
+
+
+            
+
+            <!-- Modal toggle -->
+            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="btn btn-circle">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+  
+            <!-- Main modal -->
+            <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max--full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        
+                        <!-- Modal header -->
+                        <div class="flex flex-col p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                            <div class="newSprintTitle flex-row ">
+                                <div class="flex">
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 ">
+                                        Nouveau Projet
+                                    </h3>
+                                
+                                
+                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+
+                                <div class="iconSprintTitle flex flex-row items-center">
+                                    <i class="fa-regular fa-circle-info"></i><p class="text-sm ml-1">Entrez les informations pour créer un sprint.</p>
+                                </div>
+                            </div>
+
+                            
+
+                            
+                            
+                        </div>
+                        <!-- Modal body -->
+                        <form class="p-4 md:p-5 flex flex-col">
+
+                                <div class="flex flex-row gap-4 justify-between">
+                            
+                                    <label for="projectName" class="relative block overflow-hidden border-b border-gray-400 bg-transparent pt-3 focus-within:select-secondary m-1 ">
+                                        <input type="text" id="projectName" placeholder="Nom du projet" class="w-44 peer h-8 border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" required/>
+                            
+                                        <span require class="absolute start-0 top-2 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs" >
+                                            Nom du sprint
+                                        </span>
+                                    </label>
+
+                                    
+                            
+                                    <select id="sprintSelect" class="select select-secondary w-40 h-fit" required >
+                                        <option disabled selected>Langage(s)</option>
+                                        <option value="javascript">JavaScript</option>
+                                        <option value="python">Python</option>
+                                        <option value="java">Java</option>
+                                        <option value="ruby">Ruby</option>
+                                        <option value="csharp">C#</option>
+                                        <option value="php">PHP</option>
+                                        <option value="typescript">TypeScript</option>
+                                        <option value="swift">Swift</option>
+                                        <option value="go">Go</option>
+                                        <option value="rust">Rust</option>
+                                        <option value="html"> HTML</option>
+                                        <option value="css">CSS</option>
+                                    </select>
+                                </div>
+                                
+                                
+                                <div date-rangepicker class="flex items-center mt-7 justify-between">
+                                    <div class="relative">
+                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-non">
+                                        <i class="fa-solid fa-calendar-clock text-gray-600"></i>
+                                    </div>
+                                        <input name="start" type="text" id="start" class="w-40 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="Date de début" required>
+                                    </div>
+                                        <span class="mx-4 text-gray-500">à</span>
+                                    <div class="relative">
+                                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                        <i class="fa-solid fa-calendar-clock text-gray-600"></i>
+                                    </div>
+                                        <input name="end" type="text" class="w-40 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-secondary focus:border-blue-500 block  ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Date de fin" required>
+                                    </div>
+                                </div>
+
+                                
+
+                                <div class="iconSprintTitle flex flex-row items-center mt-10 mb-3 border-t dark:border-gray-600">
+                                    <p class="text-sm ml-1 pt-4"><i class="fa-regular fa-circle-info mr-2"></i>Choisissez la classe à qui assigner le sprint.</p>
+                                </div>
+                                
+                                <div class="sprintPersons flex flex-row justify-between pt-2 w-44 ">
+                                    <select id="sprintClassSelect" class="select select-secondary w-44 h-fit">
+                                        <option disabled selected>Classe(s)</option>
+                                        <option value="l1">L1</option>
+                                        <option value="l2">L2</option>
+                                        <option value="l3">L3</option>
+                                        <option value="m1">M1</option>
+                                        <option value="m2">M2</option>
+                                        <option value="tp-reco">TP_RECO</option>
+                                    </select>
+                                </div>
+
+                                <div class="sprintSubmit flex flex-row justify-end ">
+                                    <button type="submit" id="closeModalBtn" class="btn btn-outline btn-secondary mt-8 w-auto">Valider</button>
+                                </div>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div> 
+  
+    
+        </div>
+
+        <div class="sprintsBlocks mx-10">
+            <div class="flex flex-wrap  lg:gap-8">
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+                <div class="h-32 rounded-lg bg-gray-200 min-w-56"></div>
+              </div>
+        </div>
+    </div>
+</body>
+</html>
+
